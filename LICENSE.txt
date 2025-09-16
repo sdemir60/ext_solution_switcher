@@ -1,0 +1,4 @@
+Solution Switcher
+Copyright (c) 2025 Approta Software
+
+Internal use only. Redistribution prohibited.
