@@ -55,6 +55,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SolutionSwitcherPackage.cs" />
+    <Compile Include="UI\OpenOptionsCommand.cs" />
     <Compile Include="UI\RescanCommand.cs" />
   </ItemGroup>
   <ItemGroup>

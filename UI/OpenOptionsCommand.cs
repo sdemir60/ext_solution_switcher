@@ -1,17 +1,18 @@
-﻿using Microsoft.VisualStudio.Shell;
+﻿// FILE: UI/OpenOptionsCommand.cs
+using Microsoft.VisualStudio.Shell;
 using System;
 using System.ComponentModel.Design;
 using Task = System.Threading.Tasks.Task;
 
 namespace SolutionSwitcher.UI
 {
-    internal sealed class RescanCommand
+    internal sealed class OpenOptionsCommand
     {
-        public const int CommandId = 0x0101;
+        public const int CommandId = 0x0102;
         public static readonly Guid CommandSet = new Guid("7F2C5F47-2F39-4E74-8F4A-5F1C9B920001");
         private readonly AsyncPackage _package;
 
-        private RescanCommand(AsyncPackage package, IMenuCommandService commandService)
+        private OpenOptionsCommand(AsyncPackage package, IMenuCommandService commandService)
         {
             _package = package ?? throw new ArgumentNullException(nameof(package));
 
@@ -32,27 +33,19 @@ namespace SolutionSwitcher.UI
 
             if (commandService != null)
             {
-                Instance = new RescanCommand(package, commandService);
+                Instance = new OpenOptionsCommand(package, commandService);
             }
         }
 
-        public static RescanCommand Instance { get; private set; }
+        public static OpenOptionsCommand Instance { get; private set; }
 
         private void Execute(object sender, EventArgs e)
         {
-            // Async işlemi başlat
-            _ = _package.JoinableTaskFactory.RunAsync(async delegate
-            {
-                try
-                {
-                    await Index.ProjectIndexService.ForceRescanAsync();
-                }
-                catch (Exception ex)
-                {
-                    await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-                    System.Diagnostics.Debug.WriteLine($"Rescan failed: {ex.Message}");
-                }
-            });
+            // Options sayfasını göster
+            ThreadHelper.ThrowIfNotOnUIThread();
+
+            // GetDialogPage yerine doğrudan typeof kullan
+            _package.ShowOptionPage(typeof(Options.SolutionSwitcherOptions));
         }
     }
 }
