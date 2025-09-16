@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable">
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+  <Commands>
+    <Groups>
+      <Group guid="guidSolutionSwitcherCmdSet" id="ToolbarGroup" priority="0x0100">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS"/>
+      </Group>
+    </Groups>
+    <Buttons>
+      <Button guid="guidSolutionSwitcherCmdSet" id="cmdRescan" priority="0x0100" type="Button">
+        <Parent guid="guidSolutionSwitcherCmdSet" id="ToolbarGroup"/>
+        <Icon guid="guidImages" id="bmpPic1"/>
+        <Strings>
+          <ButtonText>Solution Switcher: Rebuild Index</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidSolutionSwitcherCmdSet" id="cmdOpenOptions" priority="0x0110" type="Button">
+        <Parent guid="guidSolutionSwitcherCmdSet" id="ToolbarGroup"/>
+        <Icon guid="guidImages" id="bmpPic1"/>
+        <Strings>
+          <ButtonText>Solution Switcher: Options</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+    <Bitmaps>
+      <Bitmap guid="guidImages" href="Resources\images.png" usedList="bmpPic1"/>
+    </Bitmaps>
+  </Commands>
+  <Symbols>
+    <GuidSymbol name="guidSolutionSwitcherCmdSet" value="{7F2C5F47-2F39-4E74-8F4A-5F1C9B920001}">
+      <IDSymbol name="ToolbarGroup" value="0x1000"/>
+      <IDSymbol name="cmdRescan" value="0x0101"/>
+      <IDSymbol name="cmdOpenOptions" value="0x0102"/>
+    </GuidSymbol>
+    <GuidSymbol name="guidImages" value="{5F6A7B48-36C2-44C2-A0D0-5D5AC7000001}">
+      <IDSymbol name="bmpPic1" value="1"/>
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>
